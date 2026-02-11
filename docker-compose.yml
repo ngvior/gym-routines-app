@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gym-routines-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=db # TODO: Change this
+      - DATABASE_PORT=5432 # TODO: Change this
+      - DATABASE_USER=postgres # TODO: Change this
+      - DATABASE_PASSWORD=postgres # TODO: Change this
+      - DATABASE_NAME=gym_routines # TODO: Change this
+    depends_on:
+      - db
+    networks:
+      - gym-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: gym-routines-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres # TODO: Change this
+      POSTGRES_PASSWORD: postgres # TODO: Change this
+      POSTGRES_DB: gym_routines # TODO: Change this
+    ports:
+      - "5432:5432" # TODO: Change this
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - gym-network
+
+volumes:
+  postgres_data:
+
+networks:
+  gym-network:
+    driver: bridge
