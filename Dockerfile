@@ -7,7 +7,6 @@ RUN npm ci
 # Stage 2: Build the app
 FROM node:22-alpine AS builder
 WORKDIR /usr/src/app
-COPY package*.json ./
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
 RUN npm run build
