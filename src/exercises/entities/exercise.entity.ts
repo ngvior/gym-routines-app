@@ -39,8 +39,8 @@ export class Exercise {
   @Column({ type: 'enum', enum: MuscleGroup })
   muscleGroup: MuscleGroup;
 
-  @Column({ type: 'int' })
-  dayOfWeek: number;
+  @Column({ type: 'int', name: 'order_index' })
+  orderIndex: number;
 
   @OneToMany(() => TargetSet, (targetSet) => targetSet.exercise)
   targetSets: TargetSet[];

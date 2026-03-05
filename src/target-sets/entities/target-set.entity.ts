@@ -19,12 +19,12 @@ export class TargetSet {
   @JoinColumn({ name: 'exercise_id' })
   exercise: Exercise;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', name: 'target_reps' })
   targetReps: number;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', name: 'target_load' })
   targetLoad: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', name: 'order_index' })
   orderIndex: number;
 }

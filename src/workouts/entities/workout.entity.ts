@@ -10,6 +10,7 @@ import {
 import { User } from '../../users/entities/user.entity';
 import { Routine } from '../../routines/entities/routine.entity';
 import { WorkoutLog } from '../../workout-logs/entities/workout-log.entity';
+import { Split } from '../../splits/entities/split.entity';
 
 @Entity()
 export class Workout {
@@ -30,11 +31,18 @@ export class Workout {
   @JoinColumn({ name: 'routine_id' })
   routine: Routine;
 
-  @CreateDateColumn()
-  date: Date;
+  @Column({ type: 'uuid', nullable: true })
+  splitId: string | null;
+
+  @ManyToOne(() => Split, (split) => split.workouts, { nullable: true })
+  @JoinColumn({ name: 'split_id' })
+  split: Split;
+
+  @Column({ type: 'timestamp' })
+  startTime: Date;
 
   @Column({ type: 'timestamp', nullable: true })
-  completedAt: Date;
+  endTime: Date;
 
   @OneToMany(() => WorkoutLog, (workoutLog) => workoutLog.workout)
   workoutLogs: WorkoutLog[];
