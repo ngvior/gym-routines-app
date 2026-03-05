@@ -12,6 +12,9 @@ import { WorkoutsModule } from './workouts/workouts.module';
 import { WorkoutLogsModule } from './workout-logs/workout-logs.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { PersonalRecordsModule } from './personal-records/personal-records.module';
+import { SplitsModule } from './splits/splits.module';
+import { SplitSchedulesModule } from './split-schedules/split-schedules.module';
 
 @Module({
   imports: [
@@ -27,6 +30,9 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     WorkoutsModule,
     WorkoutLogsModule,
     AuthModule,
+    PersonalRecordsModule,
+    SplitsModule,
+    SplitSchedulesModule,
   ],
   controllers: [AppController],
   providers: [
