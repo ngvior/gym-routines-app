@@ -27,12 +27,15 @@ export class WorkoutLog {
   @JoinColumn({ name: 'exercise_id' })
   exercise: Exercise;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', name: 'actual_reps' })
   actualReps: number;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', name: 'actual_load' })
   actualLoad: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'float', name: 'target_load_snapshot', nullable: true })
+  targetLoadSnapshot: number;
+
+  @Column({ type: 'int', name: 'set_number' })
   setNumber: number;
 }

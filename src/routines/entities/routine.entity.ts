@@ -10,6 +10,7 @@ import {
 import { User } from '../../users/entities/user.entity';
 import { Exercise } from '../../exercises/entities/exercise.entity';
 import { Workout } from '../../workouts/entities/workout.entity';
+import { SplitSchedule } from '../../split-schedules/entities/split-schedule.entity';
 
 @Entity()
 export class Routine {
@@ -37,4 +38,7 @@ export class Routine {
 
   @OneToMany(() => Workout, (workout) => workout.routine)
   workouts: Workout[];
+
+  @OneToMany(() => SplitSchedule, (splitSchedule) => splitSchedule.routine)
+  splitSchedules: SplitSchedule[];
 }
