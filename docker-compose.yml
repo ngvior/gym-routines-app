@@ -5,16 +5,22 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: builder
     container_name: gym-routines-app
     restart: always
+    command: "npm run start:dev"
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT_EXTERNAL:-8000}:8000"
     environment:
       DATABASE_HOST: ${DATABASE_HOST:-db}
       DATABASE_PORT: ${DATABASE_PORT:-5432}
       DATABASE_USER: ${DATABASE_USER:-postgres}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
       DATABASE_NAME: ${DATABASE_NAME:-gym_routines}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/dist
     depends_on:
       - db
     networks:
