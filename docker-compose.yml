@@ -8,13 +8,13 @@ services:
     container_name: gym-routines-app
     restart: always
     ports:
-      - "3000:3000"
+      - "${PORT:-3000}:3000"
     environment:
-      - DATABASE_HOST=db # TODO: Change this
-      - DATABASE_PORT=5432 # TODO: Change this
-      - DATABASE_USER=postgres # TODO: Change this
-      - DATABASE_PASSWORD=postgres # TODO: Change this
-      - DATABASE_NAME=gym_routines # TODO: Change this
+      DATABASE_HOST: ${DATABASE_HOST:-db}
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_USER: ${DATABASE_USER:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      DATABASE_NAME: ${DATABASE_NAME:-gym_routines}
     depends_on:
       - db
     networks:
@@ -25,11 +25,11 @@ services:
     container_name: gym-routines-db
     restart: always
     environment:
-      POSTGRES_USER: postgres # TODO: Change this
-      POSTGRES_PASSWORD: postgres # TODO: Change this
-      POSTGRES_DB: gym_routines # TODO: Change this
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-gym_routines}
     ports:
-      - "5432:5432" # TODO: Change this
+      - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:

@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prestart:dev": "brew services start postgresql@14 && docker-compose up -d",
+    "db:down": "brew services stop postgresql@14 && docker-compose down",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
