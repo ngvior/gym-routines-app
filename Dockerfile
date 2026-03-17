@@ -2,7 +2,7 @@
 FROM node:22-alpine AS deps
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 # Stage 2: Build the app
 FROM node:22-alpine AS builder
