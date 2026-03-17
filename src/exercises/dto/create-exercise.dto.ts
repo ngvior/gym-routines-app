@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsInt, IsEnum, Min, Max } from 'class-validator';
+import { IsNotEmpty, IsString, IsInt, IsEnum, Min, IsOptional } from 'class-validator';
 import { MuscleGroup } from '../entities/exercise.entity';
 
 export class CreateExerciseDto {
@@ -15,7 +15,7 @@ export class CreateExerciseDto {
   muscleGroup: MuscleGroup;
 
   @IsInt()
-  @Min(1)
-  @Max(7)
-  dayOfWeek: number;
+  @Min(0)
+  @IsOptional()
+  orderIndex?: number;
 }

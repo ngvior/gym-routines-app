@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsInt, IsNumber, Min } from 'class-validator';
+import { IsNotEmpty, IsInt, IsNumber, Min, IsOptional } from 'class-validator';
 
 export class CreateWorkoutLogDto {
   @IsInt()
@@ -16,6 +16,10 @@ export class CreateWorkoutLogDto {
   @IsNumber()
   @Min(0)
   actualLoad: number;
+
+  @IsNumber()
+  @IsOptional()
+  targetLoadSnapshot?: number;
   
   @IsInt()
   @Min(1)

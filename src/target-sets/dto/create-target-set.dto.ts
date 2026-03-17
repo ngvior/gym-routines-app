@@ -6,7 +6,7 @@ export class CreateTargetSetDto {
   exerciseId: number;
 
   @IsInt()
-  @Min(1)
+  @Min(0)
   targetReps: number;
 
   @IsNumber()
